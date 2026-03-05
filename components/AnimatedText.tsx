@@ -5,7 +5,7 @@ import { useInView } from '@/lib/hooks';
 
 interface AnimatedTextProps {
   text: string;
-  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'p';
+  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'p' | 'div';
   className?: string;
   delay?: number;
   stagger?: boolean;
