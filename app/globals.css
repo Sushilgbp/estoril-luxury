@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar styling for luxury aesthetic */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0B0B0B;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C6A75E;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #D4B879;
+}
+
+/* Base layer customizations */
+@layer base {
+  body {
+    @apply bg-dark text-light font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+
+  /* Selection styling */
+  ::selection {
+    @apply bg-gold text-dark;
+  }
+}
+
+/* Component layer utilities */
+@layer components {
+  /* Luxury button styles */
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-8 py-4 
+           bg-transparent border-2 border-gold text-gold
+           font-sans text-sm tracking-wider uppercase
+           transition-all duration-500 ease-luxury
+           hover:bg-gold hover:text-dark
+           focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-dark;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-8 py-4 
+           bg-dark-lighter border-2 border-dark-lighter text-light
+           font-sans text-sm tracking-wider uppercase
+           transition-all duration-500 ease-luxury
+           hover:border-gold hover:text-gold
+           focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-dark;
+  }
+
+  /* Luxury input fields */
+  .input-luxury {
+    @apply w-full px-6 py-4 bg-dark-lighter border-2 border-dark-accent
+           text-light placeholder-light-muted
+           focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/20
+           transition-all duration-300 ease-luxury;
+  }
+
+  /* Section container */
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Text gradient effect */
+  .text-gradient {
+    @apply bg-gradient-to-r from-gold-light via-gold to-gold-dark 
+           bg-clip-text text-transparent;
+  }
+}
+
+/* Utility layer */
+@layer utilities {
+  /* Parallax utility */
+  .parallax-layer {
+    @apply will-change-transform;
+  }
+
+  /* Backdrop blur utility for glassmorphism */
+  .glass-dark {
+    @apply bg-dark/80 backdrop-blur-md;
+  }
+
+  /* Text shadow for better readability on images */
+  .text-shadow {
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+  }
+
+  /* Animation delays */
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+
+  .animation-delay-600 {
+    animation-delay: 600ms;
+  }
+}
