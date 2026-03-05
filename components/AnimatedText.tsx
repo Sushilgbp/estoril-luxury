@@ -2,9 +2,11 @@
 
 import { motion } from 'framer-motion';
 import { useInView } from '@/lib/hooks';
+import { ReactNode } from 'react';
 
 interface AnimatedTextProps {
-  text: string;
+  text?: string;
+  children?: ReactNode;
   as?: 'h1' | 'h2' | 'h3' | 'h4' | 'p' | 'div';
   className?: string;
   delay?: number;
@@ -13,6 +15,7 @@ interface AnimatedTextProps {
 
 export default function AnimatedText({
   text,
+  children,
   as: Component = 'p',
   className = '',
   delay = 0,
@@ -20,8 +23,28 @@ export default function AnimatedText({
 }: AnimatedTextProps) {
   const [ref, isInView] = useInView({ threshold: 0.3 });
 
+  // If children are provided, animate the children
+  if (children) {
+    return (
+      <motion.div
+        ref={ref as any}
+        initial={{ opacity: 0, y: 30 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+        transition={{
+          duration: 0.6,
+          delay,
+          ease: [0.4, 0, 0.2, 1],
+        }}
+        className={className}
+      >
+        {children}
+      </motion.div>
+    );
+  }
+
+  // Otherwise, animate text
   if (stagger) {
-    const words = text.split(' ');
+    const words = text?.split(' ') || [];
     return (
       <Component ref={ref as any} className={className}>
         {words.map((word, index) => (
@@ -49,10 +72,16 @@ export default function AnimatedText({
       initial={{ opacity: 0, y: 30 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
       transition={{
-        duration: 0.8,
+        duration: 0.6,
         delay,
         ease: [0.4, 0, 0.2, 1],
       }}
+      className={className}
+    >
+      {text}
+    </motion.div>
+  );
+}
     >
       <Component className={className}>{text}</Component>
     </motion.div>
