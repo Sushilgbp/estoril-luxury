@@ -82,8 +82,3 @@ export default function AnimatedText({
     </motion.div>
   );
 }
-    >
-      <Component className={className}>{text}</Component>
-    </motion.div>
-  );
-}
